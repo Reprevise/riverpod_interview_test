@@ -97,6 +97,8 @@ class StatsProvider extends ChangeNotifier {
         _noResults = true;
         _error = null;
       }
+    } on Exception catch (e) {
+      _error = e.toString();
     }
     _setLoading(false);
   }
