@@ -1,0 +1,40 @@
+name: riverpod_interview_test
+description: Riverpod interview test.
+publish_to: "none"
+version: 1.0.0+1
+
+environment:
+  sdk: ">=2.12.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  cupertino_icons: ^1.0.2
+  riverpod: ^0.14.0+3
+  flutter_riverpod: ^0.14.0+3
+  hooks_riverpod: ^0.14.0+4
+  flutter_hooks: ^0.17.0
+  enum_to_string: ^2.0.1
+  http: ^0.13.3
+  flutter_svg: ^0.22.0
+
+dev_dependencies:
+  flutter_lints: ^1.0.4
+  flutter_test:
+    sdk: flutter
+
+flutter:
+  uses-material-design: true
+
+  assets:
+    - assets/
+
+  fonts:
+    - family: SFProText
+      fonts:
+        - asset: fonts/SFProText-Regular.ttf
+          weight: 400
+        - asset: fonts/SFProText-Medium.ttf
+          weight: 500
+        - asset: fonts/SFProText-Semibold.ttf
+          weight: 600
