@@ -1,9 +1,9 @@
 import 'dart:convert';
 
-import 'package:flutter/foundation.dart';
-import 'package:riverpod_interview_test/datamodels/base.dart';
 import 'package:http/http.dart' as http;
-import 'package:riverpod_interview_test/error/failure.dart';
+
+import '../datamodels/base.dart';
+import '../error/failure.dart';
 
 class StatsService {
   StatsService._();

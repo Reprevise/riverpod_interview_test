@@ -1,5 +1,6 @@
 import 'package:enum_to_string/enum_to_string.dart';
-import 'package:riverpod_interview_test/enums/platform.dart';
+
+import '../enums/platform.dart';
 
 abstract class GameDelegate {
   List<PlatformType> get supportedPlatforms;

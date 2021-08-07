@@ -1,5 +1,5 @@
-import 'package:riverpod_interview_test/delegates/delegate.dart';
-import 'package:riverpod_interview_test/enums/platform.dart';
+import '../enums/platform.dart';
+import 'delegate.dart';
 
 class ApexDelegate extends GameDelegate {
   @override

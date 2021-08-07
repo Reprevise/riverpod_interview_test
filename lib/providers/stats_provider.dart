@@ -1,13 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:riverpod_interview_test/datamodels/base.dart';
-import 'package:riverpod_interview_test/delegates/apex_delegate.dart';
-import 'package:riverpod_interview_test/delegates/delegate.dart';
-import 'package:riverpod_interview_test/delegates/fn_delegate.dart';
-import 'package:riverpod_interview_test/delegates/rl_delegate.dart';
-import 'package:riverpod_interview_test/enums/platform.dart';
-import 'package:riverpod_interview_test/enums/stat_type.dart';
-import 'package:riverpod_interview_test/error/failure.dart';
-import 'package:riverpod_interview_test/services/stats_service.dart';
+
+import '../datamodels/base.dart';
+import '../delegates/apex_delegate.dart';
+import '../delegates/delegate.dart';
+import '../delegates/fn_delegate.dart';
+import '../delegates/rl_delegate.dart';
+import '../enums/platform.dart';
+import '../enums/stat_type.dart';
+import '../error/failure.dart';
+import '../services/stats_service.dart';
 
 const _indexToType = <int, StatType>{
   0: StatType.fortnite,
@@ -57,18 +58,18 @@ class StatsProvider extends ChangeNotifier {
     _stats = null;
     switch (_type) {
       case StatType.apex:
-        changeDelegate(ApexDelegate());
+        _changeDelegate(ApexDelegate());
         break;
       case StatType.fortnite:
-        changeDelegate(FortniteDelegate());
+        _changeDelegate(FortniteDelegate());
         break;
       case StatType.rl:
-        changeDelegate(RocketLeagueDelegate());
+        _changeDelegate(RocketLeagueDelegate());
         break;
     }
   }
 
-  void changeDelegate(GameDelegate newDelegate) {
+  void _changeDelegate(GameDelegate newDelegate) {
     _delegate = newDelegate;
     _platform = _delegate.supportedPlatforms.first;
     notifyListeners();
@@ -87,6 +88,7 @@ class StatsProvider extends ChangeNotifier {
     try {
       _stats = await _service.getStats(url);
       if (type == StatType.fortnite && _stats != null) {
+        // Fortnite overall stats are at the last segment
         _overallStats = _stats!.segments.last;
       } else {
         _overallStats = _stats!.segments.first;

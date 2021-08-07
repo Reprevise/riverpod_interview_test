@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:riverpod_interview_test/ui/views/stats_view.dart';
 
 import 'ui/shared/theme.dart';
+import 'ui/views/stats_view.dart';
 
 void main() {
   runApp(

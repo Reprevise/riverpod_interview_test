@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-import 'package:riverpod_interview_test/enums/platform.dart';
+import '../../enums/platform.dart';
 
 class PlatformButton extends StatelessWidget {
   final VoidCallback onTap;
@@ -40,14 +40,13 @@ class PlatformButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Flexible(
-      child: Container(
-        margin: const EdgeInsets.symmetric(horizontal: 2.0),
-        height: 48,
+      child: SizedBox(
+        height: 40,
         child: Material(
           color: isSelected ? selBackgroundColor : unselBackgroundColor,
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(8),
           child: InkWell(
-            borderRadius: BorderRadius.circular(4),
+            borderRadius: BorderRadius.circular(8),
             onTap: onTap,
             child: Padding(
               padding: const EdgeInsets.all(8.0),

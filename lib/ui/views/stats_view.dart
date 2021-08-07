@@ -4,6 +4,7 @@ import 'package:hooks_riverpod/hooks_riverpod.dart';
 
 import '../../providers/stats_provider.dart';
 import '../shared/platform_btn.dart';
+import '../shared/space.dart';
 import '../shared/stat_display.dart';
 import '../shared/theme.dart';
 
@@ -27,13 +28,19 @@ class StatsView extends HookWidget {
       final platforms = statsP.delegate.supportedPlatforms;
       return Row(
         mainAxisSize: MainAxisSize.min,
-        children: platforms
-            .map((e) => PlatformButton(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: space(
+          8.0,
+          platforms
+              .map(
+                (e) => PlatformButton(
                   onTap: () => statsP.changePlatform(e),
                   selectedPlatform: statsP.platform,
                   platform: e,
-                ))
-            .toList(),
+                ),
+              )
+              .toList(),
+        ),
       );
     }
 
@@ -91,9 +98,11 @@ class StatsView extends HookWidget {
       length: 3,
       child: Scaffold(
         extendBodyBehindAppBar: true,
+        resizeToAvoidBottomInset: false,
         body: SafeArea(
           child: Column(
             children: [
+              const SizedBox(height: 16.0),
               TabBar(
                 onTap: (newValue) => statsP.changeStatType(newValue),
                 tabs: const [
@@ -102,8 +111,10 @@ class StatsView extends HookWidget {
                   Tab(text: 'Rocket League'),
                 ],
                 indicatorColor: gold,
+                labelStyle: textTheme.subtitle2,
+                isScrollable: true,
               ),
-              const SizedBox(height: 16),
+              const SizedBox(height: 8.0),
               Card(
                 color: grey,
                 margin: EdgeInsets.zero,
@@ -127,6 +138,7 @@ class StatsView extends HookWidget {
                         controller: controller,
                         onSubmitted: statsP.fetchStats,
                         autocorrect: false,
+                        textInputAction: TextInputAction.search,
                         decoration: InputDecoration(
                           prefixIcon: const Icon(Icons.search),
                           hintText: 'Search username',
