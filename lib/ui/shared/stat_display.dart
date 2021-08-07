@@ -20,7 +20,7 @@ class StatDisplay extends StatelessWidget {
 
     const rankStyle = TextStyle(
       color: gold,
-      fontWeight: FontWeight.w600,
+      fontWeight: FontWeight.w700,
     );
 
     return Column(
@@ -32,7 +32,7 @@ class StatDisplay extends StatelessWidget {
           value.displayValue,
           style: const TextStyle(
             fontSize: 24,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w700,
           ),
         ),
         if (value.percentile != null && value.rank != null) ...[

@@ -87,11 +87,18 @@ class StatsProvider extends ChangeNotifier {
     final url = delegate.generateUrl(platform, user);
     try {
       _stats = await _service.getStats(url);
-      if (type == StatType.fortnite && _stats != null) {
+      if (type == StatType.fortnite) {
         // Fortnite overall stats are at the last segment
-        _overallStats = _stats!.segments.last;
+        _overallStats = _stats!.segments.firstWhere((element) {
+          final a = element.attributes;
+          if (a.containsKey('input')) return false;
+          if (a.containsKey('season')) return false;
+          return a['playlistGroup'] == 'all';
+        });
       } else {
-        _overallStats = _stats!.segments.first;
+        _overallStats = _stats!.segments.firstWhere((element) {
+          return element.type == 'overview';
+        });
       }
     } on Failure catch (e) {
       _error = e.message;

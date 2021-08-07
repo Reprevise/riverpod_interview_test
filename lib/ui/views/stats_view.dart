@@ -53,7 +53,10 @@ class StatsView extends HookWidget {
             const SizedBox(height: 32),
             Text(
               text,
-              style: const TextStyle(color: lightGrey),
+              style: const TextStyle(
+                color: lightGrey,
+                fontWeight: FontWeight.w500,
+              ),
               textAlign: TextAlign.center,
             ),
           ],
@@ -75,11 +78,14 @@ class StatsView extends HookWidget {
         shrinkWrap: true,
         padding: const EdgeInsets.all(16),
         children: [
-          Text(
+          const Text(
             'Overall',
-            style: Theme.of(context).textTheme.headline6,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              fontSize: 24,
+            ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 24),
           GridView.count(
             primary: false,
             crossAxisCount: 3,
@@ -130,6 +136,10 @@ class StatsView extends HookWidget {
                       const Text(
                         'Lookup Player',
                         textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 16,
+                        ),
                       ),
                       const SizedBox(height: 16),
                       buildPlatforms(),
